@@ -52,7 +52,7 @@ GET_HKS_TARGET=GetHKS
 
 
 CFLAGS += -fpermissive -fopenmp -Wno-deprecated -std=c++11 -DNO_OPEN_GL
-LFLAGS += -lgomp -lfftw3 -lfftw3f
+LFLAGS += -lgomp -L/opt/homebrew/opt/fftw/lib -lfftw3 -lfftw3f
 
 CFLAGS_DEBUG = -DDEBUG -g3
 LFLAGS_DEBUG =
@@ -62,10 +62,10 @@ LFLAGS_RELEASE = -O3 -g
 
 BIN = Bin/Linux/
 OBJECTS = Bin/Linux/Objects/
-INCLUDE = /usr/local/include/ -IInclude
+INCLUDE = /usr/local/include/ -IInclude -I/opt/homebrew/opt/fftw/include
 
 CC=gcc
-CXX=g++
+CXX=g++-15
 MD=mkdir
 
 SOFT_OBJECTS                     =$(addprefix $(OBJECTS), $(addsuffix .o, $(basename $(SOFT_SOURCE))))
